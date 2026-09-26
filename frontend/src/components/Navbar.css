@@ -1,45 +1,88 @@
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 18px clamp(20px, 4vw, 56px);
+    background: rgba(248, 250, 244, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(47, 99, 55, 0.08);
 }
 
 .navigation-links {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: 28px;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+.navigation-links a,
+.navbar-actions a {
+    text-decoration: none;
+    transition: color 180ms ease, transform 180ms ease;
+}
+
+.navigation-links a {
+    color: #324032;
+    font-size: 0.97rem;
+    font-weight: 600;
+}
+
 .navbar-actions {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.navbar-actions a:first-child {
+    color: var(--primary);
+    background: rgba(47, 99, 55, 0.08);
+}
+
+.navbar-actions a:last-child {
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary) 0%, #3a7a42 100%);
+    box-shadow: 0 12px 24px rgba(47, 99, 55, 0.18);
 }
 
 .brand a {
     text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-    color: #2e7d32;
+    font-size: clamp(1.55rem, 2vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    color: var(--primary);
 }
 
-.navigation-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-}
-
-.navbar-actions a {
-    text-decoration: none;
-    color: #2e7d32;
-}
-
-.navigation-links a:hover {
-    color: #2e7d32;
-}
-
+.navigation-links a:hover,
 .navbar-actions a:hover {
-    color: #1b5e20;
+    color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 760px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .navigation-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px 18px;
+    }
 }
